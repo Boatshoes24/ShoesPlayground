@@ -49,20 +49,24 @@ local function OnEvent(self, event, unit)
     equipmentList = {}
     classHex = ns.MyClassHexColor
 
-    local totalCurr, totalMax = 0, 0
+    local totalCurr, totalMax, lowItem = 0, 0, false
     for i = 1, 19 do
         local itemCurr, itemMax = GetInventoryItemDurability(i)
         if itemCurr and itemMax then
             totalCurr = totalCurr + itemCurr
             totalMax = totalMax + itemMax
-            local itemTbl = { name = equipmentSlotNames[i], value =  floor(itemCurr / itemMax * 100 ) }
+            local itemValue = floor(itemCurr / itemMax * 100)
+            if itemValue < 50 then
+                lowItem = true
+            end
+            local itemTbl = { name = equipmentSlotNames[i], value = itemValue }
             tinsert(equipmentList, itemTbl)
         end
     end
 
     local totalPercent = floor(totalCurr / totalMax * 100)
 
-    if totalPercent < 50 then
+    if totalPercent < 50 or lowItem then
         E:Flash(self, 0.65, true)
     else
         E:StopFlash(self)

@@ -21,7 +21,7 @@ local db
 local function CreateMenuItems()
     local diffMenu = CreateFrame('Frame', 'ShoesDT_TimeMenu', E.UIParent, 'UIDropDownMenuTemplate')
     local subMenu = {
-        {text = 'Autolog Difficult Selection', isTitle = true, notCheckable = true},
+        {text = 'Autolog Difficulty Selections', isTitle = true, notCheckable = true},
         {
             text = 'Mythic Raids',
             func = function(self, arg1, arg2, checked)

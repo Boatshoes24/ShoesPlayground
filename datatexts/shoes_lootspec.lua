@@ -1,5 +1,9 @@
+local _, ns = ...
+local SPG = ns.Addon
 local E, L, V, P, G = unpack(ElvUI)
 local DT = E:GetModule('DataTexts')
+
+local classHex = 'ffffffff'
 
 local select = select
 local UnitClass = UnitClass
@@ -7,11 +11,10 @@ local GetSpecializationInfoByID = GetSpecializationInfoByID
 local GetSpecializationInfo = GetSpecializationInfo
 local GetLootSpecialization = GetLootSpecialization
 local GetSpecialization = GetSpecialization
-local RAID_CLASS_COLORS = _G.RAID_CLASS_COLORS
+
 
 local function OnEvent(self, event, unit)
-    local _, class = UnitClass("player")
-    local classHex = RAID_CLASS_COLORS[class]:GenerateHexColor()
+    classHex = ns.MyClassHexColor
 
     local lootIcon = select(4, GetSpecializationInfoByID(GetLootSpecialization()))
     local defaultIcon = select(4, GetSpecializationInfo(GetSpecialization()))

@@ -1,11 +1,12 @@
+local _, ns = ...
+local SPG = ns.Addon
 local E, L, V, P, G = unpack(ElvUI)
 local DT = E:GetModule('DataTexts')
 
-local RAID_CLASS_COLORS = _G.RAID_CLASS_COLORS
+local UnitAffectingCombat = UnitAffectingCombat
 
 local function OnEvent(self, event, unit)
-    local _, class = UnitClass("player")
-    local classHex = RAID_CLASS_COLORS[class]:GenerateHexColor()
+    classHex = ns.MyClassHexColor
 
     local combat = UnitAffectingCombat('player') and ('|c'..classHex..'+combat|r') or '|cffffffff-combat|r'
 

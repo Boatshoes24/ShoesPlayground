@@ -1,0 +1,12 @@
+## Interface: 90105
+## Author: Boatshoes24
+## Version: 1.0
+## Title: |cff00ffffShoes Playground|r
+## Notes: Multiple UI additons.
+## RequiredDeps: ElvUI
+## OptionalDeps: ViragDevTool
+## SavedVariables: ShoesPlaygroundDB
+
+libs\load_libs.xml
+init.lua
+datatexts\load_datatexts.xml

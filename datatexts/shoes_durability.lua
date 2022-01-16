@@ -1,3 +1,5 @@
+local _, ns = ...
+local SPG = ns.Addon
 local E, L, V, P, G = unpack(ElvUI)
 local DT = E:GetModule('DataTexts')
 
@@ -25,9 +27,11 @@ local equipmentSlotNames = {
     [18] = 'Ranged',
     [19] = 'Tabard',
 }
+local classHex = 'ffffffff'
+
 local tinsert = table.insert
 local floor = math.floor
-local RAID_CLASS_COLORS = _G.RAID_CLASS_COLORS
+local GetInventoryItemDurability = GetInventoryItemDurability
 
 local function getDurabilityColor(value)
     local color = 'ffffffff'
@@ -43,8 +47,7 @@ end
 
 local function OnEvent(self, event, unit)
     equipmentList = {}
-    local _, class = UnitClass("player")
-    local classHex = RAID_CLASS_COLORS[class]:GenerateHexColor()
+    classHex = ns.MyClassHexColor
 
     local totalCurr, totalMax = 0, 0
     for i = 1, 19 do
@@ -70,9 +73,6 @@ end
 
  local function OnEnter()
     DT.tooltip:ClearLines()
-
-    local _, class = UnitClass("player")
-    local classHex = RAID_CLASS_COLORS[class]:GenerateHexColor()
 
     DT.tooltip:AddLine('|cffffffffDurability Summary|r')
     DT.tooltip:AddLine(' ')

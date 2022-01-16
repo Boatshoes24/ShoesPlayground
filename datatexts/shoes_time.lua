@@ -21,7 +21,7 @@ local function CreateMenuItems()
     local subMenu = {
         {text = 'Time Options', isTitle = true, notCheckable = true},
         {
-            text = 'Display Realm Time',
+            text = 'Use Realm Time',
             func = function(self, arg1, arg2, checked)
                 db.dt.time.realm = checked
             end,
@@ -30,7 +30,7 @@ local function CreateMenuItems()
             keepShownOnClick = true
         },
         {
-            text = 'Display 24hr Format',
+            text = 'Use 24hr Format',
             func = function(self, arg1, arg2, checked) 
                 db.dt.time.railway = checked
             end,

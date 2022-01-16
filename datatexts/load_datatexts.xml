@@ -1,0 +1,8 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="shoes_warmode.lua"/>
+	<Script file="shoes_combat.lua"/>
+	<Script file="shoes_durability.lua"/>
+	<Script file="shoes_lootspec.lua"/>
+	<Script file="shoes_time.lua"/>
+	<Script file="shoes_systemstats.lua"/>
+</Ui>

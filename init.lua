@@ -22,6 +22,13 @@ local defaults = {
             time = {
                 realm = false,
                 railway = false
+            },
+            logs = {
+                [8] = { name = 'Dungeon (M+)', value = false },
+                [14] = { name = 'Raid (Normal)', value = true },
+                [15] = { name = 'Raid (Heroic)', value = true },
+                [16] = { name = 'Raid (Mythic)', value = true },
+                [17] = { name = 'Raid (LFR)', value = false },
             }
         }
     },

@@ -19,7 +19,7 @@ local function OnEvent(self, event, unit)
     local lootIcon = select(4, GetSpecializationInfoByID(GetLootSpecialization()))
     local defaultIcon = select(4, GetSpecializationInfo(GetSpecialization()))
 
-    self.text:SetFormattedText('|c%sLoot:|r |T%d:0[:0[:0:1]]|t', classHex or 'ffffffff', lootIcon or defaultIcon)
+    self.text:SetFormattedText('|c%sLoot:|r |T%d:0:0:0:1:64:64:4:60:4:60|t', classHex or 'ffffffff', lootIcon or defaultIcon)
 end
 
 

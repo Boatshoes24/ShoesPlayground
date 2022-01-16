@@ -76,7 +76,7 @@ end
 local function OnClick(self, button)
     if button == "RightButton" then
         local timeMenu, subMenu = CreateMenuItems()
-        EasyMenu(subMenu, timeMenu, self, 0, 10, 'MENU')
+        EasyMenu(subMenu, timeMenu, self, 0, 3, 'MENU')
     end
 end
 

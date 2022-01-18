@@ -71,8 +71,11 @@ local function OnEvent(self, event, unit)
     else
         E:StopFlash(self)
     end
-
-    self.text:SetFormattedText('|T%d:0:0:0:1:64:64:4:60:4:60|t |c%s%s%%|r', anvilIcon, classHex or 'ffffffff', totalPercent or 'n/a')   
+    if #equipmentList == 0 then
+        self.text:SetFormattedText('|T%d:0:0:0:1:64:64:4:60:4:60|t |c%s%s|r', anvilIcon, classHex or 'ffffffff', 'n/a')
+    else
+        self.text:SetFormattedText('|T%d:0:0:0:1:64:64:4:60:4:60|t |c%s%s%%|r', anvilIcon, classHex or 'ffffffff', totalPercent or 'n/a') 
+    end  
 end
 
  local function OnEnter()

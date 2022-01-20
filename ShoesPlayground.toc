@@ -9,4 +9,5 @@
 
 libs\load_libs.xml
 init.lua
-datatexts\load_datatexts.xml
+core\load_core.xml
+modules\load_modules.xml

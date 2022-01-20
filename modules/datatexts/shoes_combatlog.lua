@@ -1,14 +1,13 @@
-local _, ns = ...
-local SPG = ns.Addon
-local E, L, V, P, G = unpack(ElvUI)
+local SPG, E, L, V, P, G = unpack(select(2, ...))
 local DT = E:GetModule('DataTexts')
 
 local isLogging = '|cff00ff00On|r'
 local notLogging = '|cffff0000Off|r'
 local displayString = '|c%sLogs:|r %s'
-local classHex = 'ffffffff'
 local GetInstanceInfo = GetInstanceInfo
 local LoggingCombat = LoggingCombat
+local classHex = SPG.MyClassHexColor
+
 
 local autoLogRaidIDs = {
     [2296] = 'Castle Nathria',
@@ -16,9 +15,9 @@ local autoLogRaidIDs = {
     [2481] = 'Sepulcher of the First Ones'
 }
 
-local db
 
 local function CreateMenuItems()
+    local db = SPG.db.global
     local diffMenu = CreateFrame('Frame', 'ShoesDT_TimeMenu', E.UIParent, 'UIDropDownMenuTemplate')
     local subMenu = {
         {text = 'Autolog Difficulty Selections', isTitle = true, notCheckable = true},
@@ -72,8 +71,7 @@ local function CreateMenuItems()
 end
 
 local function OnEvent(self, event, unit)
-    db = SPG.db.global
-    classHex = ns.MyClassHexColor
+    local db = SPG.db.global
     local diffID = select(3, GetInstanceInfo())
     local raidID = select(8, GetInstanceInfo())
 
@@ -116,6 +114,7 @@ local function OnClick(self, button)
 end
 
 local function OnEnter()
+    local db = SPG.db.global
     DT.tooltip:ClearLines()
 
     DT.tooltip:AddLine('Included Raids')

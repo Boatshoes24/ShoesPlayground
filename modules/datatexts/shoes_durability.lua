@@ -1,6 +1,4 @@
-local _, ns = ...
-local SPG = ns.Addon
-local E, L, V, P, G = unpack(ElvUI)
+local SPG, E, L, V, P, G = unpack(select(2, ...))
 local DT = E:GetModule('DataTexts')
 
 local anvilIcon = 136241
@@ -27,7 +25,7 @@ local equipmentSlotNames = {
     [18] = 'Ranged',
     [19] = 'Tabard',
 }
-local classHex = 'ffffffff'
+local classHex = SPG.MyClassHexColor
 
 local tinsert = table.insert
 local floor = math.floor
@@ -47,7 +45,6 @@ end
 
 local function OnEvent(self, event, unit)
     equipmentList = {}
-    classHex = ns.MyClassHexColor
 
     local totalCurr, totalMax, lowItem = 0, 0, false
     for i = 1, 19 do

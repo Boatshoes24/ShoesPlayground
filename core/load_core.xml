@@ -1,0 +1,6 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<script file="core.lua"/>
+	<script file="options.lua"/>
+	<script file="install.lua"/>
+	<Include file="addonProfiles\load_addonProfiles.xml"/>
+</Ui>

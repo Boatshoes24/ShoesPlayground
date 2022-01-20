@@ -1,0 +1,10 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<script file="BigWigs.lua"/>
+	<script file="Raven.lua"/>
+	<script file="SorhaQuestLog.lua"/>
+	<script file="Details.lua"/>
+	<script file="ProjectAzilroka.lua"/>
+	<script file="Plater.lua"/>
+	<script file="ERT.lua"/>
+	<script file="ElvUI.lua"/>
+</Ui>

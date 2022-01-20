@@ -1,13 +1,10 @@
-local _, ns = ...
-local SPG = ns.Addon
-local E, L, V, P, G = unpack(ElvUI)
+local SPG, E, L, V, P, G = unpack(select(2, ...))
 local DT = E:GetModule('DataTexts')
 
+local classHex = SPG.MyClassHexColor
 local UnitAffectingCombat = UnitAffectingCombat
 
 local function OnEvent(self, event, unit)
-    classHex = ns.MyClassHexColor
-
     local combat = UnitAffectingCombat('player') and ('|c'..classHex..'+combat|r') or '|cffffffff-combat|r'
 
     if event == 'PLAYER_REGEN_DISABLED' then

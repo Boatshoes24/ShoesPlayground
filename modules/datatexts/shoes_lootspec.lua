@@ -1,12 +1,9 @@
-local _, ns = ...
-local SPG = ns.Addon
-local E, L, V, P, G = unpack(ElvUI)
+local SPG, E, L, V, P, G = unpack(select(2, ...))
 local DT = E:GetModule('DataTexts')
 
-local classHex = 'ffffffff'
+local classHex = SPG.MyClassHexColor
 
 local select = select
-local UnitClass = UnitClass
 local GetSpecializationInfoByID = GetSpecializationInfoByID
 local GetSpecializationInfo = GetSpecializationInfo
 local GetLootSpecialization = GetLootSpecialization
@@ -14,7 +11,6 @@ local GetSpecialization = GetSpecialization
 
 
 local function OnEvent(self, event, unit)
-    classHex = ns.MyClassHexColor
 
     local lootIcon = select(4, GetSpecializationInfoByID(GetLootSpecialization()))
     local defaultIcon = select(4, GetSpecializationInfo(GetSpecialization()))

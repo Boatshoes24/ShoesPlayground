@@ -1,9 +1,9 @@
 --my own rewrite of the ElvUI combat timer for personal preference
 
-local _, ns = ...
-local SPG = ns.Addon
-local E, L, V, P, G = unpack(ElvUI)
+local SPG, E, L, V, P, G = unpack(select(2, ...))
 local DT = E:GetModule('DataTexts')
+
+local classHex = SPG.MyClassHexColor
 
 local floor, format, strjoin = floor, format, strjoin
 local GetInstanceInfo = GetInstanceInfo
@@ -13,7 +13,7 @@ local timer, startTime, inEncounter = 0, 0
 
 local function UpdateText(classColor)
     if classColor then
-	    return format('|c%s%02d:%02d|r', ns.MyClassHexColor, floor(timer/60), timer % 60)
+	    return format('|c%s%02d:%02d|r', classHex, floor(timer/60), timer % 60)
     else
         return format('|c%s%02d:%02d|r', 'ffffffff', floor(timer/60), timer % 60)
     end

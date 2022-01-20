@@ -1,22 +1,15 @@
-local _, ns = ...
-local SPG = ns.Addon
-local E, L, V, P, G = unpack(ElvUI)
+local SPG, E, L, V, P, G = unpack(select(2, ...))
 local DT = E:GetModule('DataTexts')
 
 local _G = _G
-local select = select
-local UnitClass = UnitClass
-local classHex = 'ffffffff'
+local classHex = SPG.MyClassHexColor
 local date = date
 local EasyMenu = EasyMenu
 local C_DateAndTime_GetCurrentCalendarTime = C_DateAndTime.GetCurrentCalendarTime
 local APM = { _G.TIMEMANAGER_AM, _G.TIMEMANAGER_PM }
-local RAID_CLASS_COLORS = _G.RAID_CLASS_COLORS
-
-local db
-
 
 local function CreateMenuItems()
+    local db = SPG.db.global
     local timeMenu = CreateFrame('Frame', 'ShoesDT_TimeMenu', E.UIParent, 'UIDropDownMenuTemplate')
     local subMenu = {
         {text = 'Time Options', isTitle = true, notCheckable = true},
@@ -68,11 +61,6 @@ local function AssignTime(realm, railway)
     end
 end
 
-local function OnEvent(self, event, unit)
-    db = SPG.db.global
-    classHex = ns.MyClassHexColor
-end
-
 local function OnClick(self, button)
     if button == "RightButton" then
         local timeMenu, subMenu = CreateMenuItems()
@@ -81,6 +69,7 @@ local function OnClick(self, button)
 end
 
 local function OnUpdate(self, t)
+    local db = SPG.db.global
     -- using throttle from ElvUI time DT
     self.timeElapsed = (self.timeElapsed or 5) - t
     if self.timeElapsed > 0 then return end
@@ -95,4 +84,4 @@ local function OnUpdate(self, t)
 end
 
 
-DT:RegisterDatatext('SDT Time', 'Shoes', {'PLAYER_ENTERING_WORLD'}, OnEvent, OnUpdate, OnClick, nil, nil, nil)
+DT:RegisterDatatext('SDT Time', 'Shoes', {'PLAYER_ENTERING_WORLD'}, nil, OnUpdate, OnClick, nil, nil, nil)

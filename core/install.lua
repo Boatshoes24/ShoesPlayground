@@ -8,6 +8,7 @@ local _G = _G
 local ReloadUI = ReloadUI
 local ADDONS = ADDONS
 local classHex = SPG.MyClassHexColor
+local FCF_SetChatWindowFontSize = FCF_SetChatWindowFontSize
 
 -- addon profile installation
 local addonNames = {}
@@ -66,6 +67,12 @@ local function SetupAddons()
 		PluginInstallFrame.Desc4:SetText(profileString..".")
 	else
 		PluginInstallFrame.Desc4:SetText(profilesFailed)
+	end
+
+	for _, name in ipairs(_G.CHAT_FRAMES) do
+		local frame = _G[name]
+		
+		FCF_SetChatWindowFontSize(nil, frame, 11)
 	end
 
 	PluginInstallStepComplete.message = "Addons Set"

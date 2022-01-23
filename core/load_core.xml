@@ -1,6 +1,8 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<script file="core.lua"/>
+	<script file="functions.lua"/>
 	<script file="options.lua"/>
 	<script file="install.lua"/>
+	<script file="chat_tabs.lua"/>
 	<Include file="addonProfiles\load_addonProfiles.xml"/>
 </Ui>

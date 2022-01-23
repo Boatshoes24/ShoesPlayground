@@ -24,6 +24,9 @@ SPG["RegisteredModules"] = {}
 SPG.MyName = E.myname
 SPG.MyClass = E.myLocalizedClass
 SPG.MyClassHexColor = E:ClassColor(E.myclass, true).colorStr
+SPG.InactiveHexColor = "ff3c3c3c"
+SPG.ChatFrameHeight = 135
+SPG.ChatFrameWidth = 351
 SPG.Title = format("|c%sShoes Playground|r ", SPG.MyClassHexColor)
 SPG.MyAddonProfileKey = "Shoes - 9.2"
 
@@ -83,6 +86,7 @@ function SPG:Init()
     end
 
     self.db = LibStub('AceDB-3.0'):New('ShoesPlaygroundDB', defaults, true)
+    self:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     self.initialized = true
     self:Initialize()

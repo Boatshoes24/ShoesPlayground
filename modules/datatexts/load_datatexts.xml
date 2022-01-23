@@ -8,4 +8,9 @@
 	<Script file="shoes_bagspace.lua"/>
 	<Script file="shoes_combattime.lua"/>
 	<Script file="shoes_combatlog.lua"/>
+	<Script file="shoes_chat_tab1.lua"/>
+	<Script file="shoes_chat_tab2.lua"/>
+	<Script file="shoes_chat_tab3.lua"/>
+	<Script file="shoes_chat_tab4.lua"/>
+	<Script file="shoes_chat_tab5.lua"/>
 </Ui>

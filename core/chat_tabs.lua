@@ -14,6 +14,7 @@ SPG.ChatTabs = {
         text = "G",
         selected = true,
         flashing = false,
+        showTab = false,
         clickFrame = chat_frame1,
     },
     ["ChatTabs_DataText2"] = {
@@ -21,6 +22,7 @@ SPG.ChatTabs = {
         text = "L",
         selected = false,
         flashing = false,
+        showTab = false,
         clickFrame = chat_frame2,
     },
     ["ChatTabs_DataText3"] = {
@@ -28,6 +30,7 @@ SPG.ChatTabs = {
         text = "S",
         selected = false,
         flashing = false,
+        showTab = false,
         clickFrame = chat_frame4,
     },
     ["ChatTabs_DataText4"] = {
@@ -35,6 +38,7 @@ SPG.ChatTabs = {
         text = "O",
         selected = false,
         flashing = false,
+        showTab = false,
         clickFrame = chat_frame5,
     },
     ["ChatTabs_DataText5"] = {
@@ -42,6 +46,7 @@ SPG.ChatTabs = {
         text = "W",
         selected = false,
         flashing = false,
+        showTab = false,
         clickFrame = chat_frame6,
     },
 }

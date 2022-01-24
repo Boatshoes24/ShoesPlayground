@@ -7,6 +7,8 @@ local inactive = "ff3c3c3c"
 local _G = _G
 local SELECTED_CHAT_FRAME = _G.SELECTED_CHAT_FRAME
 local NUM_CHAT_WINDOWS = _G.NUM_CHAT_WINDOWS
+local CHAT_FRAMES = _G.CHAT_FRAMES
+local lastFrame = _G.ChatFrame10Tab
 
 function SPG:RGBPercToHex(r, g, b)
 	r = r <= 1 and r >= 0 and r or 0
@@ -25,6 +27,10 @@ function SPG:SetupChatWindows()
     for _, name in ipairs(_G.CHAT_FRAMES) do
         _G[name]:SetHeight(self.ChatFrameHeight)
     end
+end
+
+function SPG:UpdateChatID(id)
+    _G.CURRENT_CHAT_FRAME_ID = id
 end
 
 function SPG:UpdateTabs()    

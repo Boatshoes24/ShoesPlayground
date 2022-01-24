@@ -5,6 +5,9 @@ local tab = CT["ChatTabs_DataText4"]
 local classHex = SPG.MyClassHexColor
 local inactive = SPG.InactiveHexColor
 
+local _G = _G
+local ToggleDropDownMenu = _G.ToggleDropDownMenu
+
 local function OnEvent(self, event, unit)
     if event == "CHAT_MSG_OFFICER" then
         if not tab.selected then
@@ -27,6 +30,9 @@ local function OnClick(self, button)
         tab.flashing = false
         E:StopFlash(self)
         SPG:UpdateTabs()
+    elseif button == "RightButton" then
+        SPG:UpdateChatID(tab.id)
+        ToggleDropDownMenu(1, nil, _G[tab.clickFrame:GetName().."DropDown"], tab.clickFrame:GetName(), 0, 0)
     end
 end
 

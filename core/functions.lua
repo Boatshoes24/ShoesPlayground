@@ -8,7 +8,6 @@ local _G = _G
 local SELECTED_CHAT_FRAME = _G.SELECTED_CHAT_FRAME
 local NUM_CHAT_WINDOWS = _G.NUM_CHAT_WINDOWS
 local CHAT_FRAMES = _G.CHAT_FRAMES
-local lastFrame = _G.ChatFrame10Tab
 
 function SPG:RGBPercToHex(r, g, b)
 	r = r <= 1 and r >= 0 and r or 0

@@ -1,11 +1,15 @@
 local SPG, E, L, V, P, G = unpack(select(2, ...))
 local DT = E:GetModule('DataTexts')
 
+local match, format = string.match, string.format
+
 local _G = _G
 local classHex = SPG.MyClassHexColor
 local date = date
 local EasyMenu = EasyMenu
 local C_DateAndTime_GetCurrentCalendarTime = C_DateAndTime.GetCurrentCalendarTime
+local C_Calendar_GetNumDayEvents = C_Calendar.GetNumDayEvents
+local C_Calendar_GetDayEvent = C_Calendar.GetDayEvent
 local APM = { _G.TIMEMANAGER_AM, _G.TIMEMANAGER_PM }
 
 local function CreateMenuItems()
@@ -80,8 +84,48 @@ local function OnUpdate(self, t)
     else
         self.text:SetFormattedText("%d|c%s:|r%02d |c%s%s|r", hour, classHex or 'ffffffff', min, classHex or 'ffffffff', APM[ampm])
     end
+end
 
+local function OnEnter()
+    local db = SPG.db.global
+    DT.tooltip:ClearLines()
+    
+    local oppositeTime = not db.dt.time.realm
+    local hour, min, ampm = AssignTime(oppositeTime, db.dt.time.railway)
+    if oppositeTime then
+        DT.tooltip:AddLine("Realm Time")
+    else
+        DT.tooltip:AddLine("Local Time")
+    end
+
+    if ampm == -1 then
+        DT.tooltip:AddLine(format("|c%s%02d|r|c%s:|r|c%s%02d|r", 'ffffffff',hour, classHex or 'ffffffff', 'ffffffff', min))
+    else
+        DT.tooltip:AddLine(format("|c%s%d|r|c%s:|r|c%s%02d|r |c%s%s|r",'ffffffff', hour, classHex or 'ffffffff', 'ffffffff', min, classHex or 'ffffffff', APM[ampm]))
+    end
+
+    DT.tooltip:AddLine(" ")
+
+   
+    local day = C_DateAndTime_GetCurrentCalendarTime().monthDay
+    local numEvents = C_Calendar_GetNumDayEvents(0, day)
+
+    if numEvents > 0 then
+        DT.tooltip:AddLine("Events")
+        for i = 1, numEvents do
+            local event = C_Calendar_GetDayEvent(0, day, i)
+            if event then
+                local title = event.title
+                if title:match("Bonus Event") then
+                    DT.tooltip:AddLine(format("|c%s%s|r", classHex, title))
+                else
+                    DT.tooltip:AddLine(format("|cff9c9c9c%s|r", title))
+                end
+            end
+        end
+    end
+    DT.tooltip:Show()
 end
 
 
-DT:RegisterDatatext('SDT Time', 'Shoes', {'PLAYER_ENTERING_WORLD'}, nil, OnUpdate, OnClick, nil, nil, nil)
+DT:RegisterDatatext('SDT Time', 'Shoes', {'PLAYER_ENTERING_WORLD'}, OnEvent, OnUpdate, OnClick, OnEnter, nil, nil)
